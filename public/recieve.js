@@ -1,5 +1,5 @@
     let sharingCode = document.querySelector("#code");
-    sharingCode = sharingCode.toUpperCase();
+    sharingCode = sharingCode.value.toUpperCase();
     let fetchButton = document.querySelector(".fetch-btn");
 
     fetchButton.addEventListener("click", () => {
@@ -137,3 +137,4 @@ setTimeout(async () => {
       }
 
     }
+
