@@ -7,7 +7,7 @@
         alert("Please enter a sharing code.");
         return;
       }
-      fetchFilesByCode(sharingCode.value.trim());
+      fetchFilesByCode(sharingCode.value);
     });
 
     // 🔹 Fetch files by sharing code
@@ -137,4 +137,5 @@ setTimeout(async () => {
       }
 
     }
+
 
