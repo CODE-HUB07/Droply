@@ -1,13 +1,12 @@
-    let sharingCode = document.querySelector("#code");
-    sharingCode = sharingCode.value.toUpperCase();
+    let sharingCode = document.querySelector("#code").value.toUpperCase();
     let fetchButton = document.querySelector(".fetch-btn");
 
     fetchButton.addEventListener("click", () => {
-      if (sharingCode.value === "") {
+      if (sharingCode === "") {
         alert("Please enter a sharing code.");
         return;
       }
-      fetchFilesByCode(sharingCode.value);
+      fetchFilesByCode(sharingCode);
     });
 
     // 🔹 Fetch files by sharing code
@@ -137,5 +136,6 @@ setTimeout(async () => {
       }
 
     }
+
 
 
