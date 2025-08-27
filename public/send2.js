@@ -195,77 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000);
     }
 
-    function generateSharingCode() {
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        let result = '';
-        for (let i = 0; i < 8; i++) {
-            result += characters.charAt(Math.floor(Math.random() * characters.length));
-        }
-        return result;
-    }
 
-    function showSharingResult(code) {
-        const senderName = document.getElementById('name').value;
-        const receiverName = document.getElementById('r-name').value;
-        const fileCount = selectedFiles.length;
-        const totalSize = selectedFiles.reduce((sum, file) => sum + file.size, 0);
-
-        sharingResult.innerHTML = `
-            <div class="result-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                    <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-            <h2>Files Ready for Sharing!</h2>
-            <p>Your ${fileCount} file${fileCount > 1 ? 's' : ''} (${formatFileSize(totalSize)}) have been prepared for ${receiverName}.</p>
-            
-            <div class="sharing-code" id="generatedCode">${code}</div>
-            
-            <button class="copy-button" onclick="copyToClipboard('${code}')">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
-                    <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
-                </svg>
-                Copy Code
-            </button>
-            
-            <div class="sharing-info">
-                <p><strong>Share this code with ${receiverName}</strong></p>
-                <p>Files will be automatically deleted in 30 minutes</p>
-                <p>Code expires after first download</p>
-            </div>
-        `;
-        
-        sharingResult.classList.add('show');
-    }
-
-    // Make copyToClipboard function global
-    window.copyToClipboard = function(text) {
-        navigator.clipboard.writeText(text).then(() => {
-            const copyButton = document.querySelector('.copy-button');
-            const originalText = copyButton.innerHTML;
-            copyButton.innerHTML = `
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Copied!
-            `;
-            setTimeout(() => {
-                copyButton.innerHTML = originalText;
-            }, 2000);
-        });
-    };
-
-    function updateProgressStep(step) {
-        const steps = document.querySelectorAll('.progress-step');
-        steps.forEach((stepEl, index) => {
-            if (index < step) {
-                stepEl.classList.add('active');
-            } else {
-                stepEl.classList.remove('active');
-            }
-        });
-    }
 
     // Form validation
     const nameInput = document.getElementById('name');
@@ -277,3 +207,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
