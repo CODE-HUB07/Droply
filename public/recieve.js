@@ -1,4 +1,5 @@
     let sharingCode = document.querySelector("#code");
+    sharingCode = sharingCode.toUpperCase();
     let fetchButton = document.querySelector(".fetch-btn");
 
     fetchButton.addEventListener("click", () => {
@@ -134,4 +135,5 @@ setTimeout(async () => {
         console.error("❌ Error in download/delete:", error);
         alert("Something went wrong: " + error.message);
       }
+
     }
