@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Files - Droply</title>
+    <link rel="shortcut icon" href="fav.png" type="image/x-icon">
+    <link rel="stylesheet" href="send.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="theme-toggle" id="themeToggle">
+        <div class="toggle-icon">🌙</div>
+    </div>
+
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <header class="header">
+        <div class="logo" onclick="window.location.href='index.html'">
+             <img src="fav.png" height="50px" alt="">
+            <span class="logo-text">Droply</span>
+        </div>
+        <div class="breadcrumb">
+            <span>Send Files</span>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="progress-bar">
+            <div class="progress-step active">
+                <div class="step-number">1</div>
+                <span>Details</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step">
+                <div class="step-number">2</div>
+                <span>Upload</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step">
+                <div class="step-number">3</div>
+                <span>Share</span>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="info-card">
+                <div class="card-header">
+                    <div class="header-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Sender Information</h3>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" />
+                </div>
+                
+                <div class="form-group">
+                    <label for="r-name">Receiver's Name</label>
+                    <input type="text" id="r-name" placeholder="Who are you sending to?" />
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Your Email (Optional)</label>
+                    <input type="email" id="email" placeholder="For delivery confirmation" />
+                </div>
+
+                <div class="security-info">
+                    <div class="security-icon">🛡️</div>
+                    <div class="security-text">
+                        <strong>Privacy Protected</strong>
+                        <p>Your information is encrypted and automatically deleted after 5 minutes When Reciver Downloaded it.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="upload-card">
+                <div class="card-header">
+                    <div class="header-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>File Upload</h3>
+                </div>
+
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                            <path d="M7 18C7 18.5523 7.44772 19 8 19H16C16.5523 19 17 18.5523 17 18V11H19L12 4L5 11H7V18Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h4>Drag & Drop your files here</h4>
+                    <p>or click to browse</p>
+                    <div class="file-limits">
+                        <span>Maximum file size: 100MB</span>
+                        <span>All file types supported</span>
+                    </div>
+                    <input type="file" id="file" multiple>
+                </div>
+
+                <div class="file-list" id="fileList"></div>
+
+                <button class="upload-button" id="uploadButton">
+                    <div class="button-content">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M7 11L12 6L17 11M12 18V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Upload & Generate Code</span>
+                    </div>
+                    <div class="button-loader"></div>
+                </button>
+            </div>
+        </div>
+
+        <div class="sharing-result" id="sharingResult"></div>
+    </main>
+
+    <script src="OtherFunctionality.js"></script>
+    <script src="send.js"></script>
+    <script src="send2.js"></script>
+
+</body>
+</html>
