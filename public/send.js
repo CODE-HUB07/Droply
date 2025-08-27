@@ -60,7 +60,7 @@ SendButton.addEventListener("click", async () => {
     alert(
         "Your Sharing code is: " +
             code +
-            "\nPlease save this code for future reference."
+            "\nPlease save this code for future reference. \n carefully store this code you will never able to see that code again !."
     );
 
     const file = fileInput.files[0];
@@ -179,3 +179,4 @@ SendButton.addEventListener("click", async () => {
             }
         });
     }
+
