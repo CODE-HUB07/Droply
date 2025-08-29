@@ -76,59 +76,7 @@
 
         URL.revokeObjectURL(link.href);
         console.log("📥 Download started for:", link.download);
-
-        // Step 4: Delete after delay
-        fileSize = fileData.size;
-   const fileSizeMB = fileSize / (1024 * 1024); // convert to MB
-
-let delay;
-
-// Progressive calculation
-if (fileSizeMB <= 10) {
-  delay = 90_000; // 1.5 min
-} else {
-  // base 1.5 min + 1 min per extra 10MB
-  const steps = Math.ceil(fileSizeMB / 10) - 1; 
-  delay = 90_000 + steps * 60_000;
-}
-
-// Cap at 5 min
-if (delay > 300_000) {
-  delay = 300_000;
-}
-
-console.log(
-  `File size: ${fileSizeMB.toFixed(2)} MB → Delay: ${(delay / 60000).toFixed(2)} min`
-);
-setTimeout(async () => {
-  console.log("🗑️ Deleting file:", filePath);
-
-  const deleteResponse = await fetch(
-    `https://api.github.com/repos/CODE-HUB07/SID-CODE/contents/${filePath}`,
-    {
-      method: "DELETE",
-      headers: {
-        "Authorization": "token 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", 
-        "Content-Type": "application/json",
-        "Accept": "application/vnd.github.v3+json"
-      },
-      body: JSON.stringify({
-        message: `Delete ${filePath} after download`,
-        sha: fileSha
-      }),
-    }
-  );
-
-  const result = await deleteResponse.json();
-  if (deleteResponse.ok) {
-    alert(`✅ File deleted from repo: ${filePath}`);
-    console.log("🗑️ Delete success:", result);
-  } else {
-    console.error("❌ Delete failed:", result);
-    alert("❌ Delete failed: " + result.message);
-  }
-}, delay);
-
+       
 
       } catch (error) {
         console.error("❌ Error in download/delete:", error);
@@ -136,6 +84,7 @@ setTimeout(async () => {
       }
 
     }
+
 
 
 
