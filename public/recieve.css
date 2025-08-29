@@ -423,7 +423,31 @@ input:focus + .input-decoration {
     margin-top: 1rem;
     line-height: 1.5;
 }
-
+  .btns-container {
+                            display: flex;
+                            gap: 10px;
+                            justify-content: center;
+                            margin-top: 20px;
+                        }
+.deattach-btn {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    background: var(--warning-gradient);
+    color: var(--text-inverse);
+    border: none;
+    padding: 1.25rem 2rem;
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+    font-family: inherit;
+    box-shadow: var(--shadow-lg);
+    display: block;
+}
 .fetch-btn {
     width: 100%;
     max-width: 300px;
@@ -443,12 +467,18 @@ input:focus + .input-decoration {
     box-shadow: var(--shadow-lg);
     display: block;
 }
-
+.deattach-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl), var(--glow-success);
+}
 .fetch-btn:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-xl), var(--glow-success);
 }
-
+.deattach-btn:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: var(--shadow-md);
+}
 .fetch-btn:disabled {
     opacity: 0.6;
     cursor: not-allowed;
